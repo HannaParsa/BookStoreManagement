@@ -15,4 +15,10 @@ class Customer(models.Model):
     date_created=models.DateTimeField(auto_now_add=True,null=True)
     
     def __str__(self):
-        return str(self.name)        
+        return str(self.name)
+class Cart(models.Model):
+    customer=models.OneToOneField(Customer, null=True, on_delete=models.CASCADE) 
+    books=models.ManyToManyField(Book)    
+ 
+    def __str__(self):
+        return str(self.customer)                
